@@ -1,0 +1,14 @@
+<!-- filepath: employees/templates/employees/delete_employee.html -->
+{% extends 'employees/base.html' %}
+
+{% block title %}Delete Employee{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Delete Employee</h2>
+<p>Are you sure you want to delete {{ employee.name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'employee_dashboard' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

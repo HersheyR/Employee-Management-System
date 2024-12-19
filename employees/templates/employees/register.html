@@ -1,0 +1,13 @@
+<!-- filepath: /e:/Assignment FSD/employee_management_system/employees/templates/employees/register.html -->
+{% extends 'employees/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Register</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

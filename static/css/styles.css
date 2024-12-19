@@ -1,0 +1,77 @@
+/* filepath: /e:/Assignment FSD/employee_management_system/static/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-primary:hover {
+    background-color: #23272b;
+    border-color: #23272b;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.thead-dark th {
+    background-color: #343a40;
+    color: white;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.form-control:focus {
+    border-color: #343a40;
+    box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.25);
+}
+
+.btn-link {
+    color: #343a40;
+}
+
+.btn-link:hover {
+    color: #23272b;
+}

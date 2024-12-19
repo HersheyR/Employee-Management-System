@@ -1,0 +1,64 @@
+<!-- filepath: /e:/Assignment FSD/employee_management_system/employees/templates/employees/employee_list_partial.html -->
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th><a href="?sort_by=id{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}">ID</a></th>
+            <th>Image</th>
+            <th><a href="?sort_by=name{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}">Name</a></th>
+            <th><a href="?sort_by=email{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}">Email</a></th>
+            <th>Mobile Number</th>
+            <th>Designation</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th><a href="?sort_by=createdate{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}">Create Date</a></th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in page_obj %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>
+                {% if employee.image %}
+                    <img src="{{ employee.image.url }}" alt="Employee Image" width="50">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.mobile }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>{{ employee.gender }}</td>
+            <td>{{ employee.course }}</td>
+            <td>{{ employee.createdate }}</td>
+            <td>
+                <a href="{% url 'edit_employee' employee.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_employee' employee.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}">First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}">Previous</a></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}{% if sort_by %}&sort_by={{ sort_by }}{% endif %}">Last</a></li>
+        {% endif %}
+    </ul>
+</nav>
