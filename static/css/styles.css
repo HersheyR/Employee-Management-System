@@ -45,15 +45,6 @@ body {
     color: white;
 }
 
-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 5px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 h1, h2, h3, h4, h5, h6 {
     color: #343a40;
 }

@@ -1,74 +1,23 @@
-<!-- filepath: employees/templates/employees/add_employee.html -->
+<!-- filepath: /e:/Assignment FSD/employee_management_system/employees/templates/employees/add_employee.html -->
 {% extends 'employees/base.html' %}
 
 {% block title %}Add Employee{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">Add Employee</h2>
-<form id="employeeForm" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="id_image">Image</label>
-        {{ form.image }}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Add Employee</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="id_name">Name</label>
-        {{ form.name }}
-    </div>
-    <div class="form-group">
-        <label for="id_email">Email</label>
-        {{ form.email }}
-    </div>
-    <div class="form-group">
-        <label for="id_mobile">Mobile</label>
-        {{ form.mobile }}
-    </div>
-    <div class="form-group">
-        <label for="id_designation">Designation</label>
-        {{ form.designation }}
-    </div>
-    <div class="form-group">
-        <label for="id_gender">Gender</label>
-        {{ form.gender }}
-    </div>
-    <div class="form-group">
-        <label for="id_course">Course</label>
-        {{ form.course }}
-    </div>
-    <button type="submit" class="btn btn-primary">Add Employee</button>
-</form>
-
-<script>
-    $(document).ready(function() {
-        $('#employeeForm').on('submit', function(event) {
-            var valid = true;
-
-            // Validate email
-            var email = $('#id_email').val();
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address.');
-                valid = false;
-            }
-
-            // Validate mobile number
-            var mobile = $('#id_mobile').val();
-            if (!/^\d+$/.test(mobile)) {
-                alert('Mobile number must be numeric.');
-                valid = false;
-            }
-
-            // Validate image file type
-            var image = $('#id_image').val();
-            if (image && !(/\.(jpg|png)$/i).test(image)) {
-                alert('Only .jpg and .png files are allowed.');
-                valid = false;
-            }
-
-            if (!valid) {
-                event.preventDefault();
-            }
-        });
-    });
-</script>
+</div>
 {% endblock %}
